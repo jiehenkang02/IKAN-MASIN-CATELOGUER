@@ -1,6 +1,4 @@
-// ** IMPORTANT: Replace 'YOUR_PHONE_NUMBER' with your actual phone number,
-// including your country code (e.g., +60123456789).
-const YOUR_PHONE_NUMBER = 'YOUR_PHONE_NUMBER'; 
+const YOUR_PHONE_NUMBER = '+60174187702'; 
 
 document.addEventListener('DOMContentLoaded', () => {
     const orderButtons = document.querySelectorAll('.order-btn');
@@ -30,4 +28,5 @@ document.addEventListener('DOMContentLoaded', () => {
             window.open(whatsappLink, '_blank');
         });
     });
+
 });
