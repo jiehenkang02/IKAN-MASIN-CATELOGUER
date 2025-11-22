@@ -1,0 +1,33 @@
+// ** IMPORTANT: Replace 'YOUR_PHONE_NUMBER' with your actual phone number,
+// including your country code (e.g., +60123456789).
+const YOUR_PHONE_NUMBER = 'YOUR_PHONE_NUMBER'; 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const orderButtons = document.querySelectorAll('.order-btn');
+
+    orderButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            // Get the product name from the button's data attribute
+            const productName = event.target.getAttribute('data-product');
+            
+            // Find the parent card to get the price
+            const productCard = event.target.closest('.product-card');
+            const priceElement = productCard.querySelector('.price');
+            // Extract the price text (e.g., "RSP Price: **RM6.00**")
+            const priceText = priceElement ? priceElement.textContent.replace('RSP Price: ', '').trim() : 'Price Unknown';
+
+            // Create the pre-filled message
+            const message = `Hello, I would like to order the product: *${productName}* priced at ${priceText}. Please confirm availability and payment details. Thank you!`;
+            
+            // URL-encode the message for the link
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Create the WhatsApp link
+            // Use 'https://wa.me/' for WhatsApp
+            const whatsappLink = `https://wa.me/${YOUR_PHONE_NUMBER.replace('+', '')}?text=${encodedMessage}`;
+            
+            // Open the link in a new tab
+            window.open(whatsappLink, '_blank');
+        });
+    });
+});
